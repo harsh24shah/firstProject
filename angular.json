@@ -28,6 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "/assets/shared-style/shared-style.scss",
               "src/styles.scss"
             ],
             "scripts": []

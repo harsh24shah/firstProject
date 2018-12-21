@@ -7,16 +7,10 @@ import { RouterModule  } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { NewsComponent } from './news/news.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
-
-
-
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,7 +30,10 @@ import {MatCardModule} from '@angular/material/card';
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

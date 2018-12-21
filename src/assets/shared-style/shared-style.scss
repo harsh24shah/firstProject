@@ -1,0 +1,11 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+$text-color: #000;
+
+a{
+    text-decoration: none;
+
+    span{
+        color:$text-color;
+    }
+}
