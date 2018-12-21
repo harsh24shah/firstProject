@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { ListingComponent } from './listing/listing.component';
-import { ApicallComponent } from './apicall/apicall.component';
+import { NewsComponent } from './news/news.component';
+
 
 
 const routes: Routes = [
@@ -10,8 +10,9 @@ const routes: Routes = [
   path: '',
   component: ListingComponent
 },
-{ path: 'apicall',
-  component: ApicallComponent
+{
+  path:'news',
+  component: NewsComponent
 }
 ];
 

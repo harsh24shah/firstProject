@@ -1,7 +1,21 @@
-<nav>
-  <ul>
-    <li><a routerLink="/apicall" routerLinkActive="active">Api call</a></li>
-  </ul>
-</nav>
+<mat-toolbar color="primary">
+    <span>My Application</span>
+  </mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <nav>
+        
+             <mat-nav-list>
+                <mat-list-item> <a routerLink="/" routerLinkActive="active">Home</a> </mat-list-item>
+                <mat-list-item><a routerLink="/news" routerLinkActive="active">News</a></mat-list-item>
+                
+              </mat-nav-list>  
+          </nav>
+    </mat-drawer>
+    <mat-drawer-content>      
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
 
-<router-outlet></router-outlet>
+
+ 
