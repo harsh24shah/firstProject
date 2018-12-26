@@ -1,4 +1,44 @@
-@import "./assets/shared-style/shared-style.scss";
+
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+$text-color: #000;
+
+a{
+    text-decoration: none;
+
+    span{
+        color:$text-color;
+    }
+}
+
+.article-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+
+    .news-card{
+        margin-bottom: 20px;
+        min-width: 500px;
+    }
+    
+}
+
+.news-sidenav {
+    min-width: 200px;
+}
+
+table{
+    width: 100%;
+}
+
+.example-full-width{
+    width:100%;
+}
