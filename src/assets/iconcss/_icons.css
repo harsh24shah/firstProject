@@ -1,0 +1,49 @@
+@font-face {
+	font-family: "Icons";
+	src: url('../../src/assets/fonts/icons/Icons.eot');
+	src: url('../../src/assets/fonts/icons/Icons.eot?#iefix') format('eot'),
+		url('../../src/assets/fonts/icons/Icons.woff2') format('woff2'),
+		url('../../src/assets/fonts/icons/Icons.woff') format('woff'),
+		url('../../src/assets/fonts/icons/Icons.ttf') format('truetype'),
+		url('../../src/assets/fonts/icons/Icons.svg#Icons') format('svg');
+}
+
+.icon:before {
+	font-family: "Icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-edit:before {
+	content: "\E001";
+}
+
+.icon-language:before {
+	content: "\E002";
+}
+
+.icon-notification:before {
+	content: "\E003";
+}
+
+.icon-padlock:before {
+	content: "\E004";
+}
+
+.icon-setting:before {
+	content: "\E005";
+}
+
+.icon-user:before {
+	content: "\E006";
+}
+
+
+
