@@ -15,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
+import { GooglePlacesDirective } from './custom-directive/google-places.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CustomDirectiveComponent } from './custom-directive/custom-directive.co
     NewsComponent,
     CustomPipeComponent,
     ReverseStringPipe,
-    CustomDirectiveComponent
+    CustomDirectiveComponent,
+    GooglePlacesDirective
   ],
   imports: [
     BrowserModule,
