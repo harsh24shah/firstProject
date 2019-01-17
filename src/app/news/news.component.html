@@ -1,18 +1,28 @@
 <div class="article-wrap">
+    <mat-card class="news-card">
+        <mat-card-content>
+            <mat-form-field>
+                <mat-select placeholder="Sources">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let dropItem of dropList.articles" >
+                    <mat-option *ngIf="dropItem.source.id"  [value]="dropItem.source.name" (click)="getUsingSource(dropItem.source.id)">{{dropItem.source.name}}</mat-option>
+                  </ng-container>                 
+                </mat-select>
+              </mat-form-field>
+          </mat-card-content>
+    </mat-card>
   <mat-card class="news-card"  *ngFor="let article of news.articles">
       <mat-card-header>
         <mat-card-title class="title">{{article.title}}</mat-card-title>
         <mat-card-subtitle>{{article.source.name}}</mat-card-subtitle>
+        <mat-card-subtitle>{{article.publishedAt | date }}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image class="img-article" src={{article.urlToImage}} alt="">
       <mat-card-content>
         <p>{{article.description}}</p>  
       </mat-card-content>
-      <mat-card-actions class="action-buttons">
-        <button mat-button color="primary"><mat-icon>thumb_up_alt</mat-icon> 12 Likes</button>
-        <button mat-button color="primary"><mat-icon>comment</mat-icon> Comments</button>
-        <button mat-button color="primary"><mat-icon>share</mat-icon> Share</button>
-        <a mat-button color="primary" href={{article.url}} target="_blank" ><mat-icon>visibility</mat-icon> More</a>
+      <mat-card-actions class="action-buttons">       
+        <a mat-button color="primary" href={{article.url}} target="_blank" ><mat-icon>open_in_new</mat-icon></a>
       </mat-card-actions>
   </mat-card> 
-</div>
+</div> 

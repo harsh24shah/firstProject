@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomPipeComponent implements OnInit {
 
   birthday = new Date(1988, 3, 15); 
-  private simpleString = "This is a simple string";
+  simpleString = "This is a simple string";
 
   constructor() { }
 

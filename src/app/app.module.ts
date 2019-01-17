@@ -10,7 +10,7 @@ import { NewsComponent } from './news/news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
-import { MatButtonModule, MatInputModule,MatTableModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatSelectModule, MatInputModule, MatTableModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
@@ -45,7 +45,8 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

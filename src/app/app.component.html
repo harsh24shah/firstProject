@@ -1,32 +1,22 @@
 
 <mat-toolbar color="primary">
-    <button mat-button (click)="sidenav.open()" ><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button (click)="sidenav.open()" ><mat-icon>menu</mat-icon></button>
     <span>News Headlines</span>  
     <span class="example-spacer"></span>
-    <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" class="example-icon"><mat-icon>settings</mat-icon></button>
 </mat-toolbar>
   <mat-menu #appMenu="matMenu">
       <button mat-menu-item> Settings </button>
       <button mat-menu-item> Help </button>
   </mat-menu>
-
-
     <mat-sidenav-container class="example-container">  
         <mat-sidenav #sidenav class="news-sidenav">
-          <mat-list class="list-nav">
-              <mat-list-item class="list-item">
-                <span class="source-name" (click)="sidenav.close();" routerLink="/" routerLinkActive="active"> Home Todo Example</span>              
-              </mat-list-item>
-              <mat-list-item class="list-item"> 
-                  <span class="source-name" (click)="sidenav.close();"  routerLink="/news" routerLinkActive="active"> Rest GET Example</span>              
-              </mat-list-item>
-              <mat-list-item class="list-item"> 
-                <span class="source-name" (click)="sidenav.close();"  routerLink="/custompipe" routerLinkActive="active"> Custom pipe Example</span>              
-              </mat-list-item>
-              <mat-list-item class="list-item"> 
-                  <span class="source-name" (click)="sidenav.close();"  routerLink="/directive" routerLinkActive="active"> Custom Directive Example</span>              
-              </mat-list-item>
-          </mat-list>
+          <mat-nav-list class="list-nav">
+                <a mat-list-item class="source-name" (click)="sidenav.close();" routerLink="/" routerLinkActive="active"> Home Todo Example</a>              
+                <a mat-list-item class="source-name" (click)="sidenav.close();"  routerLink="/news" routerLinkActive="active"> Rest GET Example</a>                       
+                <a mat-list-item class="source-name" (click)="sidenav.close();"  routerLink="/custompipe" routerLinkActive="active"> Custom pipe Example</a>                     
+                <a mat-list-item class="source-name" (click)="sidenav.close();"  routerLink="/directive" routerLinkActive="active"> Custom Directive Example</a>              
+          </mat-nav-list>
         </mat-sidenav>
         <router-outlet></router-outlet>
 </mat-sidenav-container>      

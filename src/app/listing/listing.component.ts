@@ -19,11 +19,10 @@ export class ListingComponent implements OnInit {
   }
  
   addTodo(todo){
-    if(todo){
+    if(todo){  
       this.Todo.push(todo);
       //todo = ""; 
-    }
-      
+    } 
   }
 
   removeTodo(id:number,todo:any){
@@ -31,4 +30,11 @@ export class ListingComponent implements OnInit {
     this.CompletedTodos.push(todo);
     console.log(this.CompletedTodos);
   }
+
+  undo(id:number,todo:any){
+    this.CompletedTodos.splice(id,1);
+    this.Todo.push(todo);
+  }
+
+ 
 }

@@ -11,23 +11,35 @@ import {formatDate } from '@angular/common';
 export class NewsserviceService {
   today= new Date();
   jstoday = '';
- 
+  Api = 'd0abda1a27bb4f03a4004ce278ca647f'; 
+  bysource = '';
+
   private extractData(res: Response) {
     let body = res; 
     return body || { };
   }
  
-  Api = 'd0abda1a27bb4f03a4004ce278ca647f';
+  allNews = 'https://newsapi.org/v2/top-headlines?country=us&apiKey='+this.Api;
 
   constructor(private http: HttpClient) {
     this.jstoday = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
-   }
+  }
 
-   getNewsList() : Observable<any>{
-     console.log(this.jstoday);
-    return this.http.get('https://newsapi.org/v2/everything?q=bitcoin&from='+this.jstoday+'&sortBy=publishedAt&apiKey='+this.Api)
-    .pipe( map(this.extractData));  
-   
+  getSources() : Observable<any>{
+    return this.http.get(this.allNews)
+    .pipe(map(this.extractData));    
+  }
+
+  getNewsList() : Observable<any>{ 
+     //console.log(this.jstoday); 
+    return this.http.get(this.allNews)
+    .pipe(map(this.extractData));    
   }  
+
+  getNewFromSource(source: string) : Observable<any>{
+    this.bysource = ' https://newsapi.org/v2/top-headlines?sources='+source+'&apiKey='+this.Api;
+    //console.log(this.bysource);
+    return this.http.get(this.bysource).pipe(map(this.extractData));
+  }
 } 
  
