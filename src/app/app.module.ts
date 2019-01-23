@@ -8,10 +8,24 @@ import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { NewsComponent } from './news/news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatDividerModule} from '@angular/material/divider';
-import { MatButtonModule, MatSelectModule, MatInputModule, MatTableModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
-import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { 
+  MatButtonModule, 
+  MatSelectModule,
+  MatChipsModule,
+  MatGridListModule, 
+  MatInputModule,
+  MatDividerModule,
+  MatNativeDateModule,
+  MatDatepickerModule,
+  MatTableModule, 
+  MatCardModule, 
+  MatMenuModule, 
+  MatToolbarModule, 
+  MatFormFieldModule,
+  MatIconModule, 
+  MatSidenavModule, 
+  MatListModule } from '@angular/material';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
@@ -34,9 +48,11 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     RouterModule,
     HttpClientModule,
     MatSidenavModule,
+    MatChipsModule,
     BrowserAnimationsModule,
     MatGridListModule,
     MatDividerModule,
+    MatNativeDateModule,
     MatListModule,
     MatToolbarModule,
     MatCardModule,
@@ -46,7 +62,8 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
