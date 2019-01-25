@@ -1,3 +1,4 @@
+
 <div class="fiter-bar">
   <mat-card>
     <mat-card-content>
@@ -22,9 +23,10 @@
       </mat-card-content>
   </mat-card>
 </div>
-
+ 
 <div class="article-wrap-outer">
-  <div class="card-grid">   
+    
+  <div class="card-grid">     
     <mat-card class="news-card"  *ngFor="let article of news.articles">
         <mat-card-header>
           <mat-card-title class="title" *ngIf="article.title">{{article.title}}</mat-card-title>
@@ -43,4 +45,5 @@
         </mat-card-actions>       
     </mat-card> 
   </div> 
+  <div class="spinner" *ngIf="!news.articles"><mat-spinner></mat-spinner></div>
 </div>

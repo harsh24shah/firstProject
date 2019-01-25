@@ -22,13 +22,14 @@ export class ListingComponent implements OnInit {
     if(todo){  
       this.Todo.push(todo);
       //todo = ""; 
+      this.myItem = '';
     } 
   }
 
   removeTodo(id:number,todo:any){
     this.Todo.splice(id,1);
     this.CompletedTodos.push(todo);
-    console.log(this.CompletedTodos);
+   // console.log(this.CompletedTodos);
   }
 
   undo(id:number,todo:any){

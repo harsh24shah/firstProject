@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { NewsComponent } from './news/news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+ 
 import { 
   MatButtonModule, 
   MatSelectModule,
   MatChipsModule,
+  MatProgressSpinnerModule,
   MatGridListModule, 
   MatInputModule,
   MatDividerModule,
@@ -30,6 +31,7 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
 import { GooglePlacesDirective } from './custom-directive/google-places.directive';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     MatDividerModule,
     MatNativeDateModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
@@ -67,6 +70,7 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
   ],
   providers: [],
   bootstrap: [AppComponent]
-})
+}) 
 
 export class AppModule { }
+ 

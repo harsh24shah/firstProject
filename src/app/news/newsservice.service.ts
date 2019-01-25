@@ -9,6 +9,7 @@ import {formatDate } from '@angular/common';
   providedIn: 'root'
 })
 
+@Injectable()
 export class NewsserviceService {
   
   jstoday = '';
@@ -35,10 +36,10 @@ export class NewsserviceService {
     .pipe(map(this.extractData));    
   }
 
-  getNewsList() : Observable<any>{ 
+  getNewsList() : Observable<any>{   
     let letNormalNewsList = this.NewsApi + this.country;
     return this.http.get(letNormalNewsList)
-    .pipe(map(this.extractData));    
+    .pipe(map(this.extractData));       
   }  
 
   getNewFromSource(source: string) : Observable<any>{
@@ -47,13 +48,11 @@ export class NewsserviceService {
     .pipe(map(this.extractData));
   }
 
-  getNewsFromDate(formattedDate: string, topic : string) : Observable<any>{
-    console.log(topic);
+  getNewsFromDate(formattedDate: string, topic : string) : Observable<any>{    
     if(topic == null || topic == ''){
       topic = '*';
     }
-    let FormatedDateNewsApi = this.NewsEverything + '&from=' + formattedDate + '&to=' + formattedDate + '&q='+topic;
-    console.log(FormatedDateNewsApi);
+    let FormatedDateNewsApi = this.NewsEverything + '&from=' + formattedDate + '&to=' + formattedDate + '&q='+topic;   console.log(FormatedDateNewsApi);
     return this.http.get(FormatedDateNewsApi)
     .pipe(map(this.extractData));
   }
