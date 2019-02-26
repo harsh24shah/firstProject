@@ -1,9 +1,8 @@
 <div class="article-wrap">
   <div class="todo-wrap">
 
- 
   <mat-card class="news-card">
-   
+  
       <mat-card-content>
           <section class="example-section">
             <mat-card-title class="title">Add Tasks</mat-card-title>          
@@ -26,14 +25,12 @@
             </mat-list>        
           </section>
 
-     
-
           <section class="example-section">   
             <mat-list> 
                 <div *ngIf="CompletedTodos.length">
                     <mat-divider></mat-divider><br>
                     <h3 mat-subheader *ngIf="CompletedTodos.length">Completed tasks {{CompletedTodos.length}}</h3>  
-                  </div> 
+                </div> 
               <mat-selection-list *ngFor="let done of CompletedTodos; let i = index" >
                   <mat-list-option (click)="undo(i,done)" [value]="done" [selected]="true"><del>{{done}}</del></mat-list-option>
               </mat-selection-list> 
@@ -43,6 +40,5 @@
       </mat-card-content>      
   </mat-card> 
 
-   
 </div>
 </div>

@@ -15,4 +15,9 @@ export class CustomDirectiveComponent implements OnInit {
 
   }
 
+  
+  test(){
+    alert("test alert");
+  }
+
 }

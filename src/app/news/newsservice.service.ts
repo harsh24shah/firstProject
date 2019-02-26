@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {formatDate } from '@angular/common';
 
- 
 @Injectable({
   providedIn: 'root'
 })
