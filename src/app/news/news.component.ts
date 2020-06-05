@@ -24,11 +24,15 @@ export class NewsComponent implements OnInit, OnDestroy {
   private newsSelectDate: Subscription;
   private popuplarNewsUsingSource: Subscription;
   loading: boolean = false;
-  minDate = new Date(2000, 0, 1);
   maxDate = new Date();
+  minDate = new Date();
+ 
+
   topic = "";
 
-  constructor(private http: HttpClient, private newsService: NewsserviceService) { }
+  constructor(private http: HttpClient, private newsService: NewsserviceService) { 
+    this.minDate.setMonth(this.maxDate.getMonth()-1);
+  }
 
   ngOnInit() {
     this.getNews();

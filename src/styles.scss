@@ -1,13 +1,6 @@
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-html,
-body {
-    height: 100%;
-}
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $text-color: #000;
 
@@ -110,5 +103,6 @@ table {
     width: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-card-header .mat-card-title{
+    line-height: normal;
+}

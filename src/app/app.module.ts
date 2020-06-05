@@ -3,35 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule  } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { NewsComponent } from './news/news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
-import { 
-  MatButtonModule, 
-  MatSelectModule,
-  MatProgressSpinnerModule,
-  MatInputModule,
-  MatDividerModule,
-  MatNativeDateModule,
-  MatDatepickerModule,
-  MatTableModule, 
-  MatTabsModule,
-  MatCardModule, 
-  MatMenuModule, 
-  MatToolbarModule, 
-  MatFormFieldModule,
-  MatIconModule, 
-  MatSidenavModule, 
-  MatListModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
 import { GooglePlacesDirective } from './custom-directive/google-places.directive';
-import { environment } from '../environments/environment'; 
-
+import { NewsserviceService } from './news/newsservice.service';
 
 @NgModule({
   declarations: [
@@ -49,27 +42,24 @@ import { environment } from '../environments/environment';
     FormsModule,
     RouterModule,
     HttpClientModule,
-    MatSidenavModule,
     BrowserAnimationsModule,
-    MatDividerModule,
+    MatSidenavModule,
     MatNativeDateModule,
-    MatListModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule,
+    MatDatepickerModule,
+    MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule,
-    MatTabsModule,
-    MatSelectModule,
-    MatDatepickerModule
-    ],
-  providers: [],
+    MatListModule
+  ],
+  providers: [
+    NewsserviceService,
+  ],
   bootstrap: [AppComponent]
-}) 
+})
 
 export class AppModule { }
- 
