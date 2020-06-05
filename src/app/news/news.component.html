@@ -1,49 +1,111 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>News on Cards</span>
+</mat-toolbar>
 
-<div class="fiter-bar">
-  <mat-card>
-    <mat-card-content>
-      <div class="filter-grid">
-        <mat-form-field>
-            <mat-select placeholder="Sources">
-              <ng-container *ngFor="let dropItem of dropList.articles" >
-                <mat-option *ngIf="dropItem.source.id"  [value]="dropItem.source.name" (click)="getUsingSource(dropItem.source.id)">{{dropItem.source.name}}</mat-option>
-              </ng-container>                 
-            </mat-select>
-          </mat-form-field>
-          <mat-divider [vertical]="true"></mat-divider>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav class="news-sidenav">
+    <mat-nav-list class="list-nav">
+      <ng-container *ngFor="let source of sourcesList.sources">
+        <a mat-list-item class="source-name" *ngIf="source.id"
+          (click)="sidenav.close();getUsingSource(source.id);">{{source.name}}</a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="fiter-bar">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Search News:</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="filter-grid">
           <mat-form-field>
-              <input matInput placeholder="Topic (e.g. Google)" [(ngModel)]="topic">
-            </mat-form-field>
-          <mat-form-field>             
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="selectDate('input', $event)">
+            <input matInput placeholder="Topic (e.g. Trump, Android, Maggie)" [(ngModel)]="topic">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date"
+              (dateInput)="selectDate('input', $event)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-      </div>
+        </div>
       </mat-card-content>
-  </mat-card>
-</div>
- 
-<div class="article-wrap-outer">
-    
-  <div class="card-grid">     
-    <mat-card class="news-card"  *ngFor="let article of news.articles">
-        <mat-card-header>
-          <mat-card-title class="title" *ngIf="article.title">{{article.title}}</mat-card-title>
-          <mat-card-subtitle *ngIf="article.source.name">{{article.source.name}}</mat-card-subtitle>
-          <mat-card-subtitle *ngIf="article.publishedAt">{{article.publishedAt | date }}</mat-card-subtitle>        
-        </mat-card-header>     
-        <img *ngIf="article.urlToImage" mat-card-image class="img-article" src={{article.urlToImage}} alt="">
-        <mat-card-content *ngIf="article.description">
-          <p>{{article.description}}</p>  
-        </mat-card-content>
-        <mat-chip-list *ngIf="article.author">
-            <mat-chip>{{article.author}}</mat-chip>            
-          </mat-chip-list>
-        <mat-card-actions class="action-buttons" *ngIf="article.url">       
-          <a mat-button color="primary" href={{article.url}} target="_blank" ><mat-icon>open_in_new</mat-icon>{{article.source.name}}</a>
-        </mat-card-actions>       
-    </mat-card> 
-  </div> 
-  <div class="spinner" *ngIf="!news.articles"><mat-spinner></mat-spinner></div>
-</div>
+    </mat-card>
+  </div>
+
+  <div class="article-wrap-outer">
+    <mat-tab-group mat-align-tabs="start">
+
+      <mat-tab label="Latest">
+        <div class="card-grid">
+          <mat-card *ngFor="let article of news.articles">
+            <div class="news-card">
+              <mat-card-header>
+                <mat-card-title class="title" *ngIf="article.title">{{article.title}}</mat-card-title>
+                <mat-card-subtitle *ngIf="article.publishedAt">{{article.publishedAt | date }}</mat-card-subtitle>
+              </mat-card-header>
+              <img *ngIf="!article.urlToImage" mat-card-image class="img-article"
+                src="https://dummyimage.com/600x400/f2f2f2/bababa.jpg&text=Image" alt="no image">
+              <img *ngIf="article.urlToImage" mat-card-image class="img-article" [src]=article.urlToImage
+                [alt]=article.source.name>
+              <div class="news-content">
+                <mat-card-content>
+                  <p *ngIf="article.description">{{article.description}}</p>
+                  <p *ngIf="article.author">- {{article.author}}</p>
+                </mat-card-content>
+              </div>
+              <mat-card-actions class="action-buttons" *ngIf="article.url">
+                <a mat-raised-button color="accent" class="text-white" href={{article.url}} target="_blank">
+                  {{article.source.name}}&nbsp;<mat-icon>open_in_new</mat-icon>
+                </a>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+
+        </div>
+        <div class="spinner" *ngIf="!news.articles">
+          <mat-spinner></mat-spinner>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Popular">
+        <div class="card-grid">
+          <mat-card *ngFor="let popularArticle of PopularNews.articles">
+            <div class="news-card">
+              <mat-card-header>
+                <mat-card-title class="title" *ngIf="popularArticle.title">{{popularArticle.title}}</mat-card-title>
+                <mat-card-subtitle *ngIf="popularArticle.publishedAt">{{popularArticle.publishedAt | date }}</mat-card-subtitle>
+              </mat-card-header>
+              <img *ngIf="!popularArticle.urlToImage" mat-card-image class="img-article"
+                src="https://dummyimage.com/600x400/f2f2f2/bababa.jpg&text=Image" alt="no image">
+              <img *ngIf="popularArticle.urlToImage" mat-card-image class="img-article" [src]=popularArticle.urlToImage
+                [alt]=popularArticle.source.name>
+              <div class="news-content">
+                <mat-card-content>
+                  <p *ngIf="popularArticle.description">{{popularArticle.description}}</p>
+                  <p *ngIf="popularArticle.author">- {{popularArticle.author}}</p>
+                </mat-card-content>
+              </div>
+              <mat-card-actions class="action-buttons" *ngIf="popularArticle.url">
+                <a mat-raised-button color="accent" class="text-white" href={{popularArticle.url}} target="_blank">
+                  {{popularArticle.source.name}}&nbsp;<mat-icon>open_in_new</mat-icon>
+                </a>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+        </div>
+        <div class="spinner" *ngIf="!PopularNews.articles">
+          <mat-spinner></mat-spinner>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+
+
+
+  </div>
+</mat-sidenav-container>

@@ -1,57 +1,114 @@
-
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 $text-color: #000;
 
-a{
+a {
     text-decoration: none;
 
-    span{
-        color:$text-color;
+    span {
+        color: $text-color;
     }
 }
 
-.mat-drawer-container{
+.mat-drawer-container {
     min-height: 100vh;
 }
 
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-gap: 2vw;  
+    grid-gap: 2vw;
 }
-.filter-grid{
+.filter-grid {
     display: grid;
     grid-column: 2;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 2vw;
 }
 
-.fiter-bar, .article-wrap-outer{
-    margin: 20px;  
+.fiter-bar,
+.article-wrap-outer {
+    margin: 20px;
 }
 
 .example-icon {
     padding: 0 14px;
-  }
-  
+}
+
 .example-spacer {
     flex: 1 1 auto;
 }
 
-.mat-card img {
-    max-height: 300px;
+.mat-card {
+    img {
+        min-height: 200px;
+        max-height: 300px;
+        background: url('https://dummyimage.com/600x400/f2f2f2/bababa.jpg&text=Image') center center/cover;
+    }
 }
 
 .spinner > * {
     margin: 0 auto;
 }
 
-mat-form-field{
+a {
+    &.text-white {
+        span {
+            color: white;
+        }
+    }
+}
+
+mat-form-field {
     margin-right: 20px;
 }
+
+.article-wrap-outer {
+    .mat-card {
+        display: flex !important;
+    }
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+
+    .news-content {
+        flex-grow: 1;
+    }
+
+    .mat-card-actions {
+        align-self: flex-end;
+    }
+}
+
+.mat-tab-body-wrapper {
+    margin: 16px 0;
+    padding: 0 16px;
+    min-height: 300px;
+}
+
+.news-sidenav {
+    min-width: 200px;
+    max-height: calc(100vh - 64px);
+}
+
+table {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -7,11 +7,11 @@ import { CustomDirectiveComponent } from './custom-directive/custom-directive.co
 
 const routes: Routes = [
 {
-  path: '',
+  path: 'todo',
   component: ListingComponent
 },
-{
-  path:'news',
+{ 
+  path:'',
   component: NewsComponent
 },
 {

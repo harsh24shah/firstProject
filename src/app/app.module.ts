@@ -12,14 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MatButtonModule, 
   MatSelectModule,
-  MatChipsModule,
   MatProgressSpinnerModule,
-  MatGridListModule, 
   MatInputModule,
   MatDividerModule,
   MatNativeDateModule,
   MatDatepickerModule,
   MatTableModule, 
+  MatTabsModule,
   MatCardModule, 
   MatMenuModule, 
   MatToolbarModule, 
@@ -31,6 +30,7 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
 import { GooglePlacesDirective } from './custom-directive/google-places.directive';
+import { environment } from '../environments/environment'; 
 
 
 @NgModule({
@@ -50,9 +50,7 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     RouterModule,
     HttpClientModule,
     MatSidenavModule,
-    MatChipsModule,
     BrowserAnimationsModule,
-    MatGridListModule,
     MatDividerModule,
     MatNativeDateModule,
     MatListModule,
@@ -65,9 +63,10 @@ import { GooglePlacesDirective } from './custom-directive/google-places.directiv
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatTabsModule,
     MatSelectModule,
     MatDatepickerModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 }) 
