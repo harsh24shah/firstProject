@@ -12,12 +12,13 @@ import { formatDate } from '@angular/common';
 export class NewsserviceService {
 
   jstoday = '';
-  Api = 'd0abda1a27bb4f03a4004ce278ca647f';
-  country = '&country=us';
-  pageSize = '&pageSize=50';
-  popuplar = '&sortBy=popularity';
-  NewsApi = 'https://newsapi.org/v2/top-headlines?apiKey=' + this.Api + this.pageSize;
-  NewsEverything = 'https://newsapi.org/v2/everything?apiKey=' + this.Api;
+  // https://api.nytimes.com/svc/topstories/v2/home.json?
+  //   https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=yourkey
+  // https://api.nytimes.com/svc/topstories/v2/home.json?api-key=yourkey
+  // https://api.nytimes.com/svc/topstories/v2/science.json?api-key=yourkey
+  // https://api.nytimes.com/svc/topstories/v2/us.json?api-key=yourkey
+  // https://api.nytimes.com/svc/topstories/v2/world.json?api-key=yourkey
+  Api = 'api-key=lbvRXlKElfGk6xGAefgcM1iI4eJjg0Bg';
 
   constructor(private http: HttpClient) {
     let today = new Date();
@@ -30,40 +31,24 @@ export class NewsserviceService {
     return body || {};
   }
 
-  getSources(): Observable<any> {
-    return this.http.get("https://newsapi.org/v2/sources?apiKey=d0abda1a27bb4f03a4004ce278ca647f")
-      .pipe(map(this.extractData));
-  }
-
   getNewsList(): Observable<any> {
-    let letNormalNewsList = this.NewsApi + this.country;
-    return this.http.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=d0abda1a27bb4f03a4004ce278ca647f")
-      .pipe(map(this.extractData));
-  }
-
-  getPopularNewsList(): Observable<any> {
-    return this.http.get('https://newsapi.org/v2/everything?q=*&to=' + this.jstoday + '&sortBy=popularity&apiKey=d0abda1a27bb4f03a4004ce278ca647f')
-      .pipe(map(this.extractData));
-  }
-
-  getEveryNewsList(): Observable<any> {
-    let letEveryNewsList = this.NewsEverything;
-    return this.http.get(letEveryNewsList)
+    return this.http.get("https://api.nytimes.com/svc/topstories/v2/home.json?" + this.Api)
       .pipe(map(this.extractData));
   }
 
   getNewFromSource(source: string): Observable<any> {
-    let bysource = 'https://newsapi.org/v2/top-headlines?apiKey=d0abda1a27bb4f03a4004ce278ca647f' + '&sources=' + source + this.pageSize;
+    let bysource = "https://api.nytimes.com/svc/topstories/v2/" + source + ".json?" + this.Api;
     return this.http.get(bysource)
       .pipe(map(this.extractData));
   }
 
-  getNewsFromDate(formattedDate: string, topic: string): Observable<any> {
-    topic = (topic == '') ? '*' : topic;
-    console.log(topic);
-    let FormatedDateNewsApi = this.NewsEverything + '&from=' + formattedDate + '&to=' + formattedDate + '&q=' + topic + '&sortBy=relevancy' + this.pageSize;
+  getPopularNewsList(): Observable<any> {
+    return this.http.get('https://api.nytimes.com/svc/mostpopular/v2/shared/7.json?' + this.Api) // emailed, shared, viewed
+      .pipe(map(this.extractData));
+  }
 
-    return this.http.get(FormatedDateNewsApi)
+  searchTopicNews(topic: string): Observable<any> {
+    return this.http.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ topic +'&' + this.Api)
       .pipe(map(this.extractData));
   }
 }

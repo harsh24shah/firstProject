@@ -5,7 +5,6 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { formatDate } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -26,50 +25,62 @@ export class NewsComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   maxDate = new Date();
   minDate = new Date();
- 
+  categoriesString = "arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world";
+  categories;
 
   topic = "";
 
-  constructor(private http: HttpClient, private newsService: NewsserviceService) { 
-    this.minDate.setMonth(this.maxDate.getMonth()-1);
+  constructor(private http: HttpClient, private newsService: NewsserviceService) {
+    this.minDate.setMonth(this.maxDate.getMonth() - 1);
   }
 
   ngOnInit() {
     this.getNews();
+    this.categories = this.categoriesString.split(', ');
     this.getPopularNews();
-    this.getSources();
+
   }
 
   getNews() {
     this.newsSubscription = this.newsService.getNewsList().subscribe((data: {}) => {
       this.news = data;
+
     });
   }
 
   getPopularNews() {
     this.PopularNewsSubscription = this.newsService.getPopularNewsList().subscribe((data: {}) => {
       this.PopularNews = data;
+
     })
   }
 
-  getSources() {
-    this.newsSubscription = this.newsService.getSources().subscribe((data: {}) => {
-      this.sourcesList = data;
-    });
-  }
-
   getUsingSource(source: string) {
+    this.loading = true;
     this.newsUsingSource = this.newsService.getNewFromSource(source).subscribe((data: {}) => {
       this.news = data;
+      this.loading = false;
     });
+
   }
 
-  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
+  // selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
+  //   this.loading = true;
+  //   let formattedDate = formatDate(event.value, 'yyyy-MM-dd', 'en-US', '+0530');
+  //   this.newsSelectDate = this.newsService.searchTopicNews(formattedDate, this.topic).subscribe((data: {}) => {
+  //     this.news = data;
+  //     //console.log(this.news);
+  //   });
+  //   this.loading = false;
+  // }
+
+  searchNews(type: string) {
     this.loading = true;
-    let formattedDate = formatDate(event.value, 'yyyy-MM-dd', 'en-US', '+0530');
-    this.newsSelectDate = this.newsService.getNewsFromDate(formattedDate, this.topic).subscribe((data: {}) => {
+
+    // let formattedDate = formatDate(event.value, 'yyyy-MM-dd', 'en-US', '+0530');
+    this.newsSelectDate = this.newsService.searchTopicNews(this.topic).subscribe((data: {}) => {
       this.news = data;
-      //console.log(this.news);
+      console.log(this.news);
     });
     this.loading = false;
   }

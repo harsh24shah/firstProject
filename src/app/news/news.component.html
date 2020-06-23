@@ -9,14 +9,14 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav class="news-sidenav">
     <mat-nav-list class="list-nav">
-      <ng-container *ngFor="let source of sourcesList.sources">
-        <a mat-list-item class="source-name" *ngIf="source.id"
-          (click)="sidenav.close();getUsingSource(source.id);">{{source.name}}</a>
+      <ng-container *ngFor="let category of categories">
+        <a mat-list-item class="source-name" *ngIf="category"
+          (click)="sidenav.close();getUsingSource(category);" style="text-transform: capitalize;">{{category}}</a>
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
 
-  <div class="fiter-bar">
+  <!-- <div class="fiter-bar">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Search News:</mat-card-title>
@@ -32,73 +32,77 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+         
+            <button mat-raised-button color="primary" (click)="searchNews(topic)">Search</button>
+         
         </div>
       </mat-card-content>
     </mat-card>
-  </div>
+  </div> -->
 
   <div class="article-wrap-outer">
     <mat-tab-group mat-align-tabs="start">
 
       <mat-tab label="Latest">
         <div class="card-grid">
-          <mat-card *ngFor="let article of news.articles">
+          <mat-card *ngFor="let article of news.results">
             <div class="news-card">
               <mat-card-header>
                 <mat-card-title class="title" *ngIf="article.title">{{article.title}}</mat-card-title>
-                <mat-card-subtitle *ngIf="article.publishedAt">{{article.publishedAt | date }}</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="article.published_date">{{article.published_date | date }}</mat-card-subtitle>
               </mat-card-header>
-              <img *ngIf="!article.urlToImage" mat-card-image class="img-article"
+              <img *ngIf="!article.multimedia" mat-card-image class="img-article"
                 src="https://dummyimage.com/600x400/f2f2f2/bababa.jpg&text=Image" alt="no image">
-              <img *ngIf="article.urlToImage" mat-card-image class="img-article" [src]=article.urlToImage
-                [alt]=article.source.name>
+              <img *ngIf="article.multimedia" mat-card-image class="img-article" [src]=article.multimedia[2].url
+                [alt]=article.multimedia[2].caption>
               <div class="news-content">
                 <mat-card-content>
-                  <p *ngIf="article.description">{{article.description}}</p>
-                  <p *ngIf="article.author">- {{article.author}}</p>
+                  <p *ngIf="article.abstract">{{article.abstract}}</p>
+                  <p *ngIf="article.byline">- {{article.byline}}</p>
                 </mat-card-content>
               </div>
-              <mat-card-actions class="action-buttons" *ngIf="article.url">
-                <a mat-raised-button color="accent" class="text-white" href={{article.url}} target="_blank">
-                  {{article.source.name}}&nbsp;<mat-icon>open_in_new</mat-icon>
+              <mat-card-actions class="action-buttons" *ngIf="article.short_url">
+                <a mat-raised-button color="accent" class="text-white" href={{article.short_url}} target="_blank">
+                  Read more&nbsp;<mat-icon>open_in_new</mat-icon>
                 </a>
               </mat-card-actions>
             </div>
           </mat-card>
 
         </div>
-        <div class="spinner" *ngIf="!news.articles">
+        <div class="spinner" *ngIf="!news.results">
           <mat-spinner></mat-spinner>
         </div>
       </mat-tab>
 
       <mat-tab label="Popular">
         <div class="card-grid">
-          <mat-card *ngFor="let popularArticle of PopularNews.articles">
+          <mat-card *ngFor="let article of PopularNews.results">
             <div class="news-card">
               <mat-card-header>
-                <mat-card-title class="title" *ngIf="popularArticle.title">{{popularArticle.title}}</mat-card-title>
-                <mat-card-subtitle *ngIf="popularArticle.publishedAt">{{popularArticle.publishedAt | date }}</mat-card-subtitle>
+                <mat-card-title class="title" *ngIf="article.title">{{article.title}}</mat-card-title>
+                <mat-card-subtitle *ngIf="article.published_date">{{article.published_date | date }}</mat-card-subtitle>
               </mat-card-header>
-              <img *ngIf="!popularArticle.urlToImage" mat-card-image class="img-article"
+              <img *ngIf="!article.media[0]" mat-card-image class="img-article"
                 src="https://dummyimage.com/600x400/f2f2f2/bababa.jpg&text=Image" alt="no image">
-              <img *ngIf="popularArticle.urlToImage" mat-card-image class="img-article" [src]=popularArticle.urlToImage
-                [alt]=popularArticle.source.name>
+              <img *ngIf="article.media[0] && article.media[0]['media-metadata'][2]" mat-card-image class="img-article" [src]="article.media[0]['media-metadata'][2].url"
+                [alt]="article.media[0].caption">
+             
               <div class="news-content">
-                <mat-card-content>
-                  <p *ngIf="popularArticle.description">{{popularArticle.description}}</p>
-                  <p *ngIf="popularArticle.author">- {{popularArticle.author}}</p>
+                <mat-card-content> 
+                  <p *ngIf="article.abstract">{{article.abstract}}</p>
+                  <p *ngIf="article.byline">- {{article.byline}}</p>
                 </mat-card-content>
               </div>
-              <mat-card-actions class="action-buttons" *ngIf="popularArticle.url">
-                <a mat-raised-button color="accent" class="text-white" href={{popularArticle.url}} target="_blank">
-                  {{popularArticle.source.name}}&nbsp;<mat-icon>open_in_new</mat-icon>
+              <mat-card-actions class="action-buttons" *ngIf="article.url">
+                <a mat-raised-button color="accent" class="text-white" href={{article.url}} target="_blank">
+                  Read more&nbsp;<mat-icon>open_in_new</mat-icon>
                 </a>
               </mat-card-actions>
             </div>
           </mat-card>
         </div>
-        <div class="spinner" *ngIf="!PopularNews.articles">
+        <div class="spinner" *ngIf="!PopularNews.results">
           <mat-spinner></mat-spinner>
         </div>
       </mat-tab>

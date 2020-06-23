@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ListingComponent } from './listing/listing.component';
 import { NewsComponent } from './news/news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -20,21 +19,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
-import { ReverseStringPipe } from './custom-pipe/reverse-string.pipe';
-import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
-import { GooglePlacesDirective } from './custom-directive/google-places.directive';
 import { NewsserviceService } from './news/newsservice.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListingComponent,
-    NewsComponent,
-    CustomPipeComponent,
-    ReverseStringPipe,
-    CustomDirectiveComponent,
-    GooglePlacesDirective
+    NewsComponent
   ],
   imports: [
     BrowserModule,
