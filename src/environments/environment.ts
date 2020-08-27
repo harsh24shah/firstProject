@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  baseApi: "https://api.nytimes.com/svc/topstories/v2/",
+  basePopularApi: "https://api.nytimes.com/svc/mostpopular/v2/",
   firebase: {
     apiKey: "AIzaSyAP1ndwfrtkaTaSXo43SmGq0Yomdg-ZQso",
     authDomain: "harshapps-1a31e.firebaseapp.com",

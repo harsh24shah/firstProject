@@ -20,6 +20,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { NewsserviceService } from './news/newsservice.service';
+import { AngularFireModule } from '@angular/fire';  
+import { environment } from '../environments/environment';  
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { NewsserviceService } from './news/newsservice.service';
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    AngularFireModule.initializeApp(environment.firebase)  
   ],
   providers: [
     NewsserviceService,
